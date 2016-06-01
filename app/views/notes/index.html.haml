@@ -1,3 +1,8 @@
 - @notes.each do |note|
-  = note.title
-  = note.content
+  .note
+    = link_to note.title, note
+    = note.content
+
+
+
+%button= link_to "New Note", new_note_path
