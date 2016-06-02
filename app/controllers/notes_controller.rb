@@ -3,7 +3,11 @@ class NotesController < ApplicationController
   before_action :find_note, only: [:show, :edit, :update, :destroy]
 
   def index
-    @notes = Note.where(user_id: current_user)
+    if current_user.has_role? :admin
+      @notes = Note.all
+    else
+      @notes = Note.where(user_id: current_user)
+    end
   end
 
   def new
