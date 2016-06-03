@@ -1,6 +1,8 @@
-%h1= @note.title
-%p= @note.content
+.container
+  .note-card
+    %h1= @note.title
+    %p= @note.content
 
 
-%button= link_to "Edit", edit_note_path
-%button= link_to "Delete", note_path, method: :delete, data: {confirm: "Are you sure?"}
+  = link_to "Edit", edit_note_path, class: 'btn btn-default'
+  = link_to "Delete", note_path, method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-default'

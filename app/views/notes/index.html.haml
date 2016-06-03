@@ -1,8 +1,8 @@
-- @notes.each do |note|
-  .note
-    = link_to note.title, note
-    = note.content
+.row
+  .col-md-8
+    - @notes.each do |note|
+      .note-card
+        %h2= link_to note.title, note
+        = note.content
+  .col-md-4
 
-
-
-%button= link_to "New Note", new_note_path
