@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_note, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     if current_user.has_role? :admin
