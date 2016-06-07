@@ -6,5 +6,22 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   %body
-    = yield
+    .container
+      %nav.navbar.navbar-default
+        .navbar-header
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          - if user_signed_in?
+            %ul.nav.navbar-nav
+              = link_to "Home", welcome_index_path, class: 'btn btn-default navbar-btn'
+              = link_to "New note", new_note_path, class: 'btn btn-default navbar-btn'
+              = link_to "My notes", notes_path, class: 'btn btn-default navbar-btn'
+            %ul.nav.navbar-nav.navbar-right
+              = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-default navbar-btn'
+          - else
+            %ul.nav.navbar-nav.navbar-right
+              = link_to "Sign Up", new_user_registration_path, class: 'btn btn-default navbar-btn'
+              or #{link_to "Sign in", new_user_session_path, class: 'btn btn-default navbar-btn'}
+
+      = yield

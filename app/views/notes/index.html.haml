@@ -1,8 +1,7 @@
-.row
-  .col-md-8
-    - @notes.each do |note|
-      .note-card
-        %h2= link_to note.title, note
-        = note.content
-  .col-md-4
+
+- @notes.each do |note|
+  .note-card
+    %h2= link_to note.title, note
+    = note.content
+
 
